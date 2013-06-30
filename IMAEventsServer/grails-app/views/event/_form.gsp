@@ -10,14 +10,6 @@
 	<g:textField name="eventName" required="" value="${eventInstance?.eventName}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: eventInstance, field: 'dateAdded', 'error')} required">
-	<label for="dateAdded">
-		<g:message code="event.dateAdded.label" default="Date Added" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="dateAdded" precision="day"  value="${eventInstance?.dateAdded}"  />
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: eventInstance, field: 'eventDate', 'error')} required">
 	<label for="eventDate">
 		<g:message code="event.eventDate.label" default="Event Date" />
