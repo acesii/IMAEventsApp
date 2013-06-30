@@ -5,14 +5,25 @@ import grails.converters.*
 class UpcomingEventsController {
 
   def list() {
-    // List all events in region params.id since params.addedSince
+
+    // Top level JSON response object
     def result = [:]
+
+    // List all events in region params.id since params.addedSince
+    result.events = []
 
     def region = Region.findByRegionName(params.id)
 
     if ( region != null ) {
       def added_since_timestamp = new Date(Long.parseLong(params.addedSince))
-      result.events = Event.findAllByRegionAndDateAddedGreaterThan(region, added_since_timestamp)
+      Event.findAllByRegionAndDateAddedGreaterThan(region, added_since_timestamp).each { event ->
+        result.events.add([
+                           name:event.eventName,
+                           dateAdded:event.dateAdded.getTime(), 
+                           eventDate:event.eventDate, 
+                           address:event.eventAddress, 
+                           region:event.region.regionName])
+      }
     }
 
     render result as JSON
