@@ -3,7 +3,7 @@ package uk.ac.shu.ima.events
 class Event {
 
   String eventName
-  Date dateAdded
+  Date dateAdded = new Date // Default to Now
   Date eventDate
   String eventAddress
   Region region
