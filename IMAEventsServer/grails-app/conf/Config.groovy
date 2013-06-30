@@ -88,4 +88,14 @@ log4j = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+
+    debug  'grails.app.controllers',
+           'grails.app.service',
+           'grails.app.services',
+           'grails.app.domain',
+           'grails.app.tagLib',
+           'grails.app.conf',
+           'grails.app.jobs',
+           'grails.app.conf.BootStrap' // ,
+
 }

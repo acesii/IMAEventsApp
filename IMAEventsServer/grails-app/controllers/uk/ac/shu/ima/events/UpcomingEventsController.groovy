@@ -6,6 +6,8 @@ class UpcomingEventsController {
 
   def list() {
 
+    log.debug(params);
+
     // Top level JSON response object
     def result = [:]
 
@@ -26,6 +28,11 @@ class UpcomingEventsController {
       }
     }
 
-    render result as JSON
+    // Implement JSONP Callback
+    if ( params.callback ) {
+      render "${params.callback}(${result as JSON})"
+    } else {
+      render result as JSON
+    }
   }
 }
